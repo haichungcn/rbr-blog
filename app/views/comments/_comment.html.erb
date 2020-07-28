@@ -1,16 +1,11 @@
-<h4>#<%= comment.id %></h4>
-<p>
-  <strong>Commenter:</strong>
-  <%= comment.commenter %>
-</p>
+<strong><%= comment.commenter %>:</strong>
 
 <p>
-  <strong>Comment:</strong>
-  <%= comment.body %>
+  - <%= comment.body %>
+  <span>
+    <%= link_to '✖️', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </span>
 </p>
-<p>
-  <%= link_to 'Destroy', [comment.article, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
+
+
 <br />

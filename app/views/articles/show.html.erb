@@ -1,18 +1,20 @@
 <h2>Article #<%= @article.id %></h2>
 <p>
-  <strong>Title:</strong>
-  <%= @article.title %>
+  <strong><%= @article.title %></strong>
 </p>
 
 <p>
-  <strong>Text:</strong>
   <%= @article.text %>
 </p>
 
 <hr />
 
 <h3>Comments</h3>
+<% if @article.comments.any? %>
 <%= render @article.comments %>
+<% else %>
+<em>There is no comment.</em>
+<% end %>
 
 <hr />
 
