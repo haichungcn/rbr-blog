@@ -1,27 +1,34 @@
 <h1>Listing Articles</h1>
-<%= link_to '📝 New article', new_article_path %>
+<%= link_to '📝 Create new article', new_article_path %>
 <br />
 <br />
-<table>
-  <tr>
-    <th>-- Title --</th>
-    <th>-- Text --</th>
-    <th></th>
-  </tr>
-  <tr></tr>
-  <% @articles.each do |article| %>
-  <tr>
-    <td><%= link_to article.title, article_path(article) %></td>
-    <td><%= article.text %></td>
-    <td><%= link_to '👁', article_path(article) %></td>
-    <td></td>
-    <td><%= link_to '📝', edit_article_path(article) %></td>
-    <td></td>
-    <td><%= link_to '❌', article_path(article),
+
+<div class="table-container">
+  <table class="table table-bordered table-hover" style="max-width: 100vw;">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" colspan="6">-- Title --</th>
+        <th scope="col" colspan="12">-- Text --</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr></tr>
+      <% @articles.each_with_index do |article, index| %>
+      <tr style="max-height: 100px;">
+        <th scopr="row"><%= index + 1 %></th>
+        <td colspan="6"><%= link_to article.title, article_path(article) %></td>
+        <td colspan="12"><span class="font-weight-light list-body"><%= article.text %></span></td>
+        <td><%= link_to '👁', article_path(article) %></td>
+        <td><%= link_to '📝', edit_article_path(article) %></td>
+        <td><%= link_to '❌', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
-    <td></td>
-  </tr>
-  <% end %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-</table>
+<%= link_to '🏠 Home', root_path %>

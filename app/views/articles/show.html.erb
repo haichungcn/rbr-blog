@@ -1,24 +1,24 @@
-<h2>Article #<%= @article.id %></h2>
-<p>
-  <strong><%= @article.title %></strong>
+<h4 class="text-info font-italic">Article #<%= @article.id %></h4>
+<p class="h2 text-dark my-3">
+  <%= @article.title %>
 </p>
 
-<p>
+<p class="text-left mb-3">
   <%= @article.text %>
 </p>
 
 <hr />
 
-<h3>Comments</h3>
+<h4 class="text-info font-italic">Comments</h4>
 <% if @article.comments.any? %>
 <%= render @article.comments %>
 <% else %>
-<em>There is no comment.</em>
+<em class="text-muted">There is no comment.</em>
 <% end %>
 
 <hr />
 
-<h3>Add a comment:</h3>
+<h4 class="text-info font-italic">Add a comment:</h4>
 <%= render 'comments/form' %>
 
 <%= link_to 'Edit', edit_article_path(@article) %> |

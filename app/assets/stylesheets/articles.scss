@@ -1,3 +1,29 @@
 // Place all the styles related to the Articles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.field_with_errors {
+  color: darkred;
+  font-style: italic;
+  font-weight: 800;
+
+  input {
+    border-color: rgb(191, 6, 6);
+    border-radius: 2px;
+  }
+}
+
+.table-container {
+  height: fit-content;
+  width: 98vw;
+  overflow-x: auto;
+}
+
+.list-body {
+  display: inline-block;
+  max-height: 200px;
+  max-width: 65vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

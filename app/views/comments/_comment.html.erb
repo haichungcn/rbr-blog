@@ -1,11 +1,11 @@
-<strong><%= comment.commenter %>:</strong>
-
-<p>
-  - <%= comment.body %>
-  <span>
-    <%= link_to '✖️', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-  </span>
-</p>
-
-
-<br />
+<div class="card my-2" style="width: 30vw; min-width: 500px;">
+  <div class="card-body">
+    <span class="card-link float-right text-decoration-none">
+      <%= link_to '✖️', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
+    </span>
+    <h5 class="card-title"><%= comment.commenter %>:</h5>
+    <p class="card-text font-italic">
+      <%= comment.body %>
+    </p>
+  </div>
+</div>

@@ -12,9 +12,11 @@
 
 <body>
   <% flash.each do |name, msg|%>
-  <ul>
-    <li><%= msg %></li>
-  </ul>
+  <div class="alert alert-success">
+    <ul>
+      <li><%= msg %></li>
+    </ul>
+  </div>
   <% end %>
   <%= yield %>
 </body>
