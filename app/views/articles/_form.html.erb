@@ -13,22 +13,23 @@
   </ul>
 </div>
 <% end %>
-<p>
-<div class="font-italic font-weight-bold text-muted">
-  <%= form.label :title %>
-</div>
-<%= form.text_field :title %>
-</p>
 
-<p>
-<div class="font-italic font-weight-bold text-muted">
-  <%= form.label :text %>
+<div class="d-block my-3">
+  <div class="font-italic font-weight-bold text-muted">
+    <%= form.label :title %>
+  </div>
+  <%= form.text_field :title, class: "form-control col-md-4 col-lg-3", placeholder: "Title of the article", autofocus: true  %>
 </div>
-<%= form.text_area :text %>
-</p>
 
-<p>
+<div class="d-block my-3">
+  <div class="font-italic font-weight-bold text-muted">
+    <%= form.label :text %>
+  </div>
+  <%= form.text_area :text, class: "form-control col-md-5 col-lg-4", placeholder: "Content", rows: "8" %>
+</div>
+
+<div class="d-block my-4">
   <%= form.submit class: "btn btn-primary btn-rounded" %>
-</p>
+</div>
 
 <% end %>
