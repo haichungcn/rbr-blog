@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  get 'signup', to: 'users#new'
+  resources :users, except: [:new]
+  
   root 'welcome#index'
 end
