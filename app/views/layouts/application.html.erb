@@ -12,11 +12,18 @@
 
 <body>
   <%= render 'layouts/navigation' %>
+
   <div class='main-container'>
     <%= render 'layouts/messages' %>
     <%= yield %>
   </div>
-  <div class="main-footer fixed-bottom text-center py-3"><em class="text-muted">❤️ Powered by <strong><a class="text-decoration-none text-dark" href="https://rubyonrails.org/" alt="link-to-rails">Ruby on Rails</a> ❤️</strong></em></div>
+
+  <div class="main-footer fixed-bottom text-center py-3">
+    <em class="text-muted">❤️ Powered by <strong><a class="text-decoration-none text-dark" href="https://rubyonrails.org/" alt="link-to-rails">Ruby on Rails</a> ❤️</strong></em>
+    <a class="github-logo text-decoration-none" href="https://github.com/haichungcn/rbr-blog" alt="github-link">
+      <%= image_tag("octocat.png", :alt => "github", class: "github-logo-img") %>
+    </a>
+  </div>
 </body>
 
 </html>

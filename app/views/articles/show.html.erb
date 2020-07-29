@@ -5,8 +5,18 @@
       <%= @article.title %>
     </p>
 
+    <p class="text-muted font-italic">
+      <% if (@article.created_at.to_time - @article.updated_at.to_time) >= 0 %>
+      Posted on
+      <%= @article.created_at.strftime(" %H:%m, %d/%m/%Y") %>
+      <% else %>
+      Updated on
+      <%= @article.updated_at.strftime(" %H:%m, %d/%m/%Y") %>
+      <% end %>
+    </p>
+
     <div class="article-content text-left mb-3">
-      <%= @article.text %>
+      <%= simple_format @article.text %>
     </div>
 
     <hr />
