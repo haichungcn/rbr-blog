@@ -4,8 +4,8 @@
       <%= link_to '✖️', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
     </span>
     <h5 class="card-title"><%= comment.commenter %>:</h5>
-    <p class="card-text font-italic">
+    <div class="comment-body card-text text-justify">
       <%= comment.body %>
-    </p>
+    </div>
   </div>
 </div>

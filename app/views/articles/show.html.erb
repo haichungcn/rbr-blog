@@ -1,25 +1,29 @@
-<h4 class="text-info font-italic">Article #<%= @article.id %></h4>
-<p class="h2 text-dark my-3">
-  <%= @article.title %>
-</p>
+<div class="row justify-content-center">
+  <div class="col-8">
+    <h4 class="text-info font-italic">Article #<%= @article.id %></h4>
+    <p class="h2 text-dark my-3">
+      <%= @article.title %>
+    </p>
 
-<p class="text-left mb-3">
-  <%= @article.text %>
-</p>
+    <div class="article-content text-left mb-3">
+      <%= @article.text %>
+    </div>
 
-<hr />
+    <hr />
 
-<h4 class="text-info font-italic">Comments</h4>
-<% if @article.comments.any? %>
-<%= render @article.comments %>
-<% else %>
-<em class="text-muted">There is no comment.</em>
-<% end %>
+    <h4 class="text-info font-italic">Comments</h4>
+    <% if @article.comments.any? %>
+    <%= render @article.comments %>
+    <% else %>
+    <em class="text-muted">There is no comment.</em>
+    <% end %>
 
-<hr />
+    <hr />
 
-<h4 class="text-info font-italic">Add a comment:</h4>
-<%= render 'comments/form' %>
+    <h4 class="text-info font-italic">Add a comment:</h4>
+    <%= render 'comments/form' %>
 
-<%= link_to 'Edit', edit_article_path(@article) %> |
-<%= link_to 'Back', articles_path %>
+    <%= link_to 'Edit', edit_article_path(@article) %> |
+    <%= link_to 'Back', articles_path %>
+  </div>
+</div>

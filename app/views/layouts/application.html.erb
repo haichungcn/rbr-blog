@@ -11,14 +11,12 @@
 </head>
 
 <body>
-  <% flash.each do |name, msg|%>
-  <div class="alert alert-success">
-    <ul>
-      <li><%= msg %></li>
-    </ul>
+  <%= render 'layouts/navigation' %>
+  <div class='main-container'>
+    <%= render 'layouts/messages' %>
+    <%= yield %>
   </div>
-  <% end %>
-  <%= yield %>
+  <div class="main-footer fixed-bottom text-center py-3"><em class="text-muted">❤️ Powered by <strong><a class="text-decoration-none text-dark" href="https://rubyonrails.org/" alt="link-to-rails">Ruby on Rails</a> ❤️</strong></em></div>
 </body>
 
 </html>
