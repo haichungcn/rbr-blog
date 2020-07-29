@@ -23,3 +23,13 @@
     margin-top: 16px;
   }
 }
+
+.comment {
+  position: relative;
+  .remove-comment {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.2rem;
+  }
+}

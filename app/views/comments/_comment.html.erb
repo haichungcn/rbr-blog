@@ -1,11 +1,14 @@
-<div class="card my-2" style="width: 30vw; min-width: 500px;">
+<div class="card comment my-2" style="width: 30vw; min-width: 500px;">
   <div class="card-body">
-    <% if logged_in? && current_user == obj %>
-    <span class="card-link float-right text-decoration-none">
-      <%= link_to '✖️', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-    </span>
+    <% if logged_in? && (current_user == obj || current_user == comment.user) %>
+    <div class="card-link remove-comment text-decoration-none">
+      <%= link_to '✖️', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' }, class: "text-decoration-none" %>
+    </div>
     <% end %>
-    <h5 class="card-title"><%= comment.commenter %>:</h5>
+    <div class="row align-items-center pl-2 w-100">
+      <%= gravatar_for(comment.user, size: 48) %>
+      <h5 class="card-title d-inline ml-2"><%= comment.user.name %>:</h5>
+    </div>
     <div class="comment-body card-text text-justify">
       <%= simple_format comment.body %>
     </div>

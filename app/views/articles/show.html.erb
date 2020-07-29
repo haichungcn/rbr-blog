@@ -35,9 +35,15 @@
 
     <hr />
 
-    <h4 class="text-info font-italic mb-4">Add a comment:</h4>
 
-    <%= render 'comments/form' %>
+    <div class="mb-4">
+      <% if logged_in? %>
+      <h4 class="text-info font-italic mb-4">Add a comment:</h4>
+      <%= render 'comments/form' %>
+      <% else %>
+      <em class="text-muted">Log in to leave a comment</em>
+      <% end %>
+    </div>
 
     <%= link_to '← Back', :back %>
     <% if logged_in? && current_user == @article.user %>

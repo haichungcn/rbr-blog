@@ -21,6 +21,15 @@
   </p>
 
   <p class="mb-4">
+    <strong class="text-muted">Commented: </strong>
+    <% if @user.comments.count > 0 %>
+    <%= pluralize(@user.comments.count, "comment") %>
+    <% else %>
+    no comment yet
+    <% end %>
+  </p>
+
+  <p class="mb-4">
     <%= render 'articles', obj: @user.articles %>
   </p>
 </div>
