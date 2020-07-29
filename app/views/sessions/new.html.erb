@@ -1,0 +1,45 @@
+<h1 class="text-info">Log in</h1>
+
+<%= form_for(:session, :html => {class: "form-horizontal", role: "form"}, url: login_path) do |form| %>
+
+<%
+=begin%>
+<% if @user.errors.any? %>
+<div class="alert alert-danger" role="alert" id="error_explanation">
+  <p class="h4">
+    <%= pluralize(@user.errors.count, "error") %> prohibited
+    this user from being created:
+  </p>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<%
+=end%>
+
+<div class="d-block form-group my-3">
+  <div class="font-italic font-weight-bold text-muted">
+    <%= form.label :email %>
+  </div>
+  <%= form.email_field :email, class: "form-control col-md-4 col-lg-3", placeholder: "Enter email", autofocus: true  %>
+</div>
+
+<div class="d-block form-group my-3">
+  <div class="font-italic font-weight-bold text-muted">
+    <%= form.label :password %>
+  </div>
+  <%= form.password_field :password, class: "form-control col-md-4 col-lg-3", placeholder: "Enter password", autocomplete: "off"  %>
+</div>
+
+<div class="form-group my-5">
+  <%= form.submit "Log in", class: "btn btn-primary btn-rounded mr-4" %>
+  <%= link_to "Cancel", :back %>
+</div>
+
+<%= link_to "Sign up", signup_path, class: "text-decoration-none mt-3" %>
+
+
+<% end %>

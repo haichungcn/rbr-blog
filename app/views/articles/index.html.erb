@@ -1,9 +1,14 @@
 <h1>Listing Articles</h1>
+<% if logged_in? %>
 <%= link_to '📝 Create new article', new_article_path %>
 <br />
 <br />
+<% end %>
 
-<div class="table-container">
+<div class="container-fluid d-flex justify-content-center">
+  <%= will_paginate %>
+</div>
+<div class="table-container container-fluid">
   <table class="table table-bordered table-hover" style="max-width: 100vw;">
     <thead class="thead-dark">
       <tr>
@@ -18,17 +23,29 @@
       <% @articles.each_with_index do |article, index| %>
       <tr style="max-height: 100px;">
         <th scopr="row"><%= index + 1 %></th>
-        <td colspan="6"><%= link_to article.title, article_path(article) %></td>
+        <td colspan="6">
+          <%= link_to article.title, article_path(article) %>
+          <br>
+          <small>by <%= link_to article.user.name, user_path(article.user) %></small>
+        </td>
         <td colspan="12"><span class="font-weight-light list-body"><%= article.text %></span></td>
         <td><%= link_to '👁', article_path(article) %></td>
+        <% if logged_in? && current_user == article.user %>
         <td><%= link_to '📝', edit_article_path(article) %></td>
         <td><%= link_to '❌', article_path(article),
               method: :delete,
               data: { confirm: 'Are you sure?' } %></td>
+        <% else %>
+        <td></td>
+        <td></td>
+        <% end %>
       </tr>
       <% end %>
     </tbody>
   </table>
+</div>
+<div class="container-fluid d-flex justify-content-center">
+  <%= will_paginate %>
 </div>
 
 <%= link_to '🏠 Home', root_path %>

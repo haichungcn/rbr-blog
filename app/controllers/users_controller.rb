@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
+  def index
+    @users = User.all
+  end
+
+  def show
+  end
+
   def new
     @user = User.new
   end
@@ -13,6 +24,21 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      flash[:warning] = "User info was successfully updated."
+      redirect_to @user
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+  end
   
   private
   def set_user
@@ -21,5 +47,12 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:danger] = "You do not have the authorization to perform this action"
+      redirect_to root_path
+    end
   end
 end

@@ -1,0 +1,8 @@
+<% if obj.count > 0 %>
+<strong class="text-muted">All posts by user: </strong>
+<ol class="pt-0">
+  <% obj.each do |article| %>
+  <li><%= link_to article.title, article_path(article) %></li>
+  <% end %>
+</ol>
+<% end %>

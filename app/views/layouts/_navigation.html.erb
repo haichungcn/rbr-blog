@@ -16,9 +16,26 @@
       <li class="nav-item">
         <%= link_to "Blog", articles_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item mr-2">
         <%= link_to "Contact", contact_path, class: "nav-link" %>
       </li>
+      <% if logged_in? %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as <strong><%= current_user.name %></strong>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "👨‍💼 User page", user_path(current_user), class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "📤 Log out", logout_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
+      <% else %>
+      <li class="nav-item dropdown">
+        <%= link_to "Log in", login_path, class: "btn btn-outline-success" %>
+        <%= link_to "Sign up", signup_path, class: "btn btn-outline-secondary ml-2" %>
+      </li>
+      <% end %>
     </ul>
 
     <form class="form-inline mt-2 mt-md-0">
@@ -26,6 +43,6 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button>
     </form>
 
-    <%= link_to "Sign up", signup_path, class: "btn btn-outline-secondary ml-3" %>
+
   </div>
 </nav>

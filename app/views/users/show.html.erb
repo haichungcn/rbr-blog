@@ -1,0 +1,31 @@
+<h1 class="text-info"><%= @user.name %>'s page</h1>
+
+<div class="mt-4 mb-5" style="font-size: 1.2rem;">
+  <%= gravatar_for @user %>
+
+  <p class="mb-4">
+    <strong class="text-muted">Username: </strong><%= @user.name %>
+  </p>
+
+  <p class="mb-4">
+    <strong class="text-muted">Email: </strong><%= @user.email %>
+  </p>
+
+  <p class="mb-4">
+    <strong class="text-muted">Posted: </strong>
+    <% if @user.articles.count > 0 %>
+    <%= pluralize(@user.articles.count, "post") %>
+    <% else %>
+    no post yet
+    <% end %>
+  </p>
+
+  <p class="mb-4">
+    <%= render 'articles', obj: @user.articles %>
+  </p>
+</div>
+
+<%= link_to '← Back', :back %>
+<% if logged_in? && current_user == @user %>
+| <%= link_to 'Edit', edit_user_path(@user) %>
+<% end %>

@@ -27,3 +27,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.pagination {
+  margin: 16px auto;
+  text-align: center;
+  :nth-child(n) {
+    margin: 0 2px;
+  }
+}

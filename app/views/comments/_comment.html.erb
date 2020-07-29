@@ -1,8 +1,10 @@
 <div class="card my-2" style="width: 30vw; min-width: 500px;">
   <div class="card-body">
+    <% if logged_in? && current_user == obj %>
     <span class="card-link float-right text-decoration-none">
       <%= link_to '✖️', [comment.article, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
     </span>
+    <% end %>
     <h5 class="card-title"><%= comment.commenter %>:</h5>
     <div class="comment-body card-text text-justify">
       <%= simple_format comment.body %>
