@@ -2,24 +2,28 @@
 
 <div class="container-fluid text-center my-4">
   <div class="row justify-content-start flex-wrap">
-    <% @users.each do |user| %>
-    <div class="card col-md-4 col-lg-3 bg-light text-center p-3" style="margin: 0.2rem;">
-      <ul class="listing">
-        <li><%= link_to gravatar_for(user), user_path(user) %></li>
-        <li class="article-title">
-          <strong><%= link_to user.name, user_path(user) %></strong>
-        </li>
-        <li>
-          <small>
-            <% if user.articles.count > 0 %>
-            <%= pluralize(user.articles.count, "post") %>
-            <% else %>
-            User does not have any post.
-            <% end %>
-          </small>
-        </li>
-      </ul>
-    </div>
+    <% if @users.count > 0 %>
+      <% @users.each do |user| %>
+      <div class="card col-md-4 col-lg-3 bg-light text-center p-3" style="margin: 0.2rem;">
+        <ul class="listing">
+          <li><%= link_to gravatar_for(user), user_path(user) %></li>
+          <li class="article-title">
+            <strong><%= link_to user.name, user_path(user) %></strong>
+          </li>
+          <li>
+            <small>
+              <% if user.articles.count > 0 %>
+              <%= pluralize(user.articles.count, "post") %>
+              <% else %>
+              User does not have any post.
+              <% end %>
+            </small>
+          </li>
+        </ul>
+      </div>
+      <% end %>
+    <% else %>
+      <h4 class="font-italic">There is no member at the moment.</h4>
     <% end %>
   </div>
 </div>
