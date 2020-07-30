@@ -7,4 +7,4 @@ Weblog is aimed to be a platform where people can share their ideas as well as i
 I would be really appreciated if you could leave some feedbacks on the site or what I can improve via (my email)[haichungcn@gmail.com] ✉️ or the form in Contact section.
 
 
-(Heroku link)[https://shrouded-tor-31401.herokuapp.com/]
+(Heroku link)[https://haict-rbr-blog.herokuapp.com/]
