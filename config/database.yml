@@ -50,7 +50,7 @@ development:
 
 test:
   <<: *default
-  database: test
+  database: haict-test
 
 production:
   <<: *default
