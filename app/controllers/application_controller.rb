@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :current_route?
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
@@ -15,5 +15,9 @@ class ApplicationController < ActionController::Base
       flash[:danger] = "You must be logged in to perform that action"
       redirect_to root_path
     end
+  end
+
+  def current_route?(controller)
+    controller.include?(params[:controller])
   end
 end

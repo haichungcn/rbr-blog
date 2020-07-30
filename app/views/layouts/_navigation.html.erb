@@ -7,19 +7,19 @@
 
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item <%= "active" if current_route?("welcome") %>">
         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <%= "active" if current_route?("articles") %>">
         <%= link_to "Blogs", articles_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <%= "active" if current_route?("users") %>">
         <%= link_to "Members", users_path, class: "nav-link" %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item <%= "active" if current_route?("about") %>">
         <%= link_to "About", about_path, class: "nav-link" %>
       </li>
-      <li class="nav-item mr-2">
+      <li class="nav-item mr-2 <%= "active" if current_route?("contact") %>">
         <%= link_to "Contact", contact_path, class: "nav-link" %>
       </li>
       <% if logged_in? %>
