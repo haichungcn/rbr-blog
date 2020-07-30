@@ -1,26 +1,10 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my **experimental** blog built on top of the awesome ✨ **Ruby on Rails 6** ✨, since 27 July 2020.
 
-Things you may want to cover:
+Weblog is aimed to be a platform where people can share their ideas as well as interact via comments with each others.
 
-- Ruby version
+I would be really appreciated if you could leave some feedbacks on the site or what I can improve via (my email)[haichungcn@gmail.com] ✉️ or the form in Contact section.
 
-- System dependencies
 
-- Configuration
-
-- Database creation
-
-- Database initialization
-
-- How to run the test suite
-
-- Services (job queues, cache servers, search engines, etc.)
-
-- Deployment instructions
-
-- ...
-
-https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project
+(Heroku link)[https://shrouded-tor-31401.herokuapp.com/]
