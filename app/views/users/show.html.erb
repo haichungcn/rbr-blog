@@ -12,6 +12,10 @@
   </p>
 
   <p class="mb-4">
+    <strong class="text-muted">Role: </strong><%= @user.admin? ? "⭐️ Admin" : "None" %>
+  </p>
+
+  <p class="mb-4">
     <strong class="text-muted">Posted: </strong>
     <% if @user.articles.count > 0 %>
     <%= pluralize(@user.articles.count, "post") %>
@@ -35,6 +39,6 @@
 </div>
 
 <%= link_to '← Back', :back %>
-<% if logged_in? && current_user == @user %>
+<% if logged_in? && (current_user == @user  || current_user.admin?)%>
 | <%= link_to 'Edit', edit_user_path(@user) %>
 <% end %>

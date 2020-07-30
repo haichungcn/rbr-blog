@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
   
   def update
     if @article.update(article_params)
-      flash[:warning] = "Article was successfully updated."
+      flash[:success] = "Article was successfully updated."
       redirect_to @article
     else
       render 'edit'
@@ -40,7 +40,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    flash[:danger] = "Article was successfully destroyed."
+    flash[:success] = "Article was successfully destroyed."
 
     redirect_to articles_path
   end
@@ -55,8 +55,8 @@ class ArticlesController < ApplicationController
     end
 
     def require_same_user
-      if current_user != @article.user
-        flash[:danger] = "You do not have the authorization to perform this action"
+      if current_user != @article.user && !current_user.admin?
+        flash[:warning] = "You do not have the authorization to perform this action"
         redirect_to root_path
       end
     end

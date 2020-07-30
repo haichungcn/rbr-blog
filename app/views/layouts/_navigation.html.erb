@@ -25,7 +25,7 @@
       <% if logged_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Logged in as <strong><%= current_user.name %></strong>
+          Logged in as <strong><%= current_user.name %> <%= "(⭐️ Admin)" if current_user.admin? %></strong>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to "👨‍💼 User page", user_path(current_user), class: "dropdown-item" %>

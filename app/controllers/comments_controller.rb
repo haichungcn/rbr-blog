@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.find(params[:id])
     if current_user == @comment.user
       @comment.destroy
+      flash[:success] = "Comment is successfully destroyed"
     else
       flash[:warning] = "You don't have the authorization to perform this action"
     end
