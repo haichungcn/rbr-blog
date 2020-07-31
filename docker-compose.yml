@@ -1,0 +1,25 @@
+version: "3.1"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: haict
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: postgres-docker-db
+    ports:
+      - 5432:5432
+    volumes:
+      - database_volume:/var/lib/postgresql/data/
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@pgadmin.com"
+      PGADMIN_DEFAULT_PASSWORD: "password"
+    ports:
+      - 8080:80
+    depends_on:
+      - postgres
+
+volumes:
+  database_volume:
