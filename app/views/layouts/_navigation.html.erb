@@ -13,38 +13,66 @@
       <li class="nav-item <%= "active" if current_route?("articles") %>">
         <%= link_to "Blogs", articles_path, class: "nav-link" %>
       </li>
+
+      <li class="nav-item dropdown  <%= "active" if current_route?("categories") %>">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "All Categories", categories_path, class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+
+          <ul class="list-group list-group-flush">
+            <% Category.all.each do |category| %>
+            <li class="list-group-item list-group-item-action">
+              <%= link_to "#{category.name}", category_path(category) %>
+              <span class="badge badge-primary badge-pill float-right">0</span>
+            </li>
+            <% end %>
+          </ul>
+
+          <% if logged_in? and current_user.admin? %>
+          <div class="dropdown-divider"></div>
+          <%= link_to  "Create new Category", new_category_path, class: "dropdown-item" %>
+          <% end %>
+
+        </div>
+      </li>
+
       <li class="nav-item <%= "active" if current_route?("users") %>">
         <%= link_to "Members", users_path, class: "nav-link" %>
       </li>
       <li class="nav-item <%= "active" if current_route?("about") %>">
         <%= link_to "About", about_path, class: "nav-link" %>
       </li>
-      <li class="nav-item mr-2 <%= "active" if current_route?("contact") %>">
+      <li class="nav-item <%= "active" if current_route?("contact") %>">
         <%= link_to "Contact", contact_path, class: "nav-link" %>
       </li>
+
       <% if logged_in? %>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown ml-3">
         <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Logged in as <strong><%= current_user.name %> <%= "(⭐️ Admin)" if current_user.admin? %></strong>
+          <strong>👨‍💼 <%= current_user.name %> <%= "(⭐️ Admin)" if current_user.admin? %></strong>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "👨‍💼 User page", user_path(current_user), class: "dropdown-item" %>
+          <%= link_to "👨‍💼  User page", user_path(current_user), class: "dropdown-item" %>
           <div class="dropdown-divider"></div>
-          <%= link_to "📤 Log out", logout_path, method: :delete, class: "dropdown-item" %>
+          <%= link_to "📤  Log out", logout_path, method: :delete, class: "dropdown-item text-decoration-none" %>
         </div>
       </li>
       <% else %>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown ml-3">
         <%= link_to "Log in", login_path, class: "btn btn-outline-success" %>
         <%= link_to "Sign up", signup_path, class: "btn btn-outline-secondary ml-2" %>
       </li>
       <% end %>
     </ul>
+  </div>
 
-    <form class="form-inline mt-2 mt-md-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button>
-    </form>
+  <form class="form-inline mt-2 mt-md-0">
+    <input class="form-control mr-sm-2" type="text" placeholder="Email" aria-label="Email">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Subscribe</button>
+  </form>
 
 
   </div>
