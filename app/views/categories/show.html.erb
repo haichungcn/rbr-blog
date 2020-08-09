@@ -1,0 +1,17 @@
+<div class="row text-center m-4">
+  <div class="col-12">
+    <p class="h1 text-info mb-3">#<%= @category.name %></p>
+    <p class="h5 text-dark mb-5">All posts: </p>
+
+    <% if @category.articles.any? %>
+    <%= render @category.articles %>
+    <% else %>
+    <div class="mb-4">
+      <em class="mb-4">There is no post in this category yet.</em>
+    </div>
+    <% end %>
+  </div>
+  <div class="col-12 my-3">
+    <%= link_to '← Back', :back %>
+  </div>
+</div>

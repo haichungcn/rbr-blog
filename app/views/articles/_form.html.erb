@@ -28,6 +28,12 @@
   <%= form.text_area :text, class: "form-control col-md-5 col-lg-4", placeholder: "Content", rows: "8" %>
 </div>
 
+<div class="d-block my-3">
+  <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
+  <% cb.label(class: "checkbox-inline input_checkbox mr-3") {cb.check_box(class: "checkbox mr-1") + cb.text} %>
+  <% end %>
+</div>
+
 <div class="d-block my-4">
   <%= form.submit class: "btn btn-primary btn-rounded" %>
 </div>

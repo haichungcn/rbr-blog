@@ -15,16 +15,29 @@
       <% end %>
     </p>
 
+    <% if @article.categories.any? %>
+    <ul class="list-group list-group-horizontal">
+      <strong class="mr-2 text-dark">Categories:</strong>
+      <% @article.categories.each do |category| %>
+      <li class="btn btn-light rounded-pill px-2 py-0 mr-1">
+        <%= link_to "##{category.name}", category_path(category), class: "text-decoration-none" %>
+      </li>
+      <% end %>
+    </ul>
+    <% end %>
+
     <br>
     <div class="article-content text-left my-4" style="font-size: 1.2rem;">
       <%= simple_format @article.text %>
     </div>
 
+    <hr>
+
     <p class="text-muted font-italic mb-4">
-      by <%= link_to @article.user.name, @article.user %>
+      Posted by <%= link_to @article.user.name, @article.user %>, Copyright © <%= link_to "WEBLOG", root_path, class: "text-decoration-none" %> 2020
     </p>
 
-    <hr />
+    <hr>
 
     <h4 class="text-info font-italic mb-4">Comments</h4>
     <% if @article.comments.any? %>

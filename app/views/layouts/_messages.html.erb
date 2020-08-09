@@ -1,10 +1,10 @@
-<div class="row justify-content-end float-right">
-  <div class="col-xs-10 col-xs-offset-1">
-    <% flash.each do |name, msg|%>
-    <div class='alert alert-<%= "#{name}" %>'>
-      <a href="#" class="close" data-dismiss="alert">&#215;</a>
+<div class="flash-msg">
+  <% flash.each do |name, msg|%>
+  <div class='alert alert-<%= "#{name}" %> text-nowrap'>
+    <a href="#" class="close" data-dismiss="alert" style="line-height:80%;">&#215;</a>
+    <div class="pr-4">
       <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
     </div>
-    <% end %>
   </div>
+  <% end %>
 </div>
