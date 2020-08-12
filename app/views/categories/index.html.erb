@@ -1,11 +1,23 @@
-<h1 class="text-info">Listing of Categories</h1>
+<div class="row text-center fluid">
+  <div class="col-12">
+    <h1 class="text-info">Listing of Categories</h1>
 
-<ul class="listing list-group" style="width:20rem;">
-  <%= will_paginate %>
-  <% @categories.each do |category| %>
-  <li class="list-group-item article-title text-center">
-    <%= link_to "#{category.name}", category_path(category) %>
-  </li>
-  <% end %>
-  <%= will_paginate %>
-</ul>
+    <ul class="listing list-group mx-auto" style="width:20rem;">
+      <%= will_paginate %>
+      <% @categories.each do |category| %>
+      <li class="list-group-item article-title text-center">
+        <%= link_to "#{category.name}", category_path(category) %>
+        <br>
+        <small class="text-muted">
+          <% if category.articles.any? %>
+          <%= pluralize(category.articles.count, "article") %>
+          <% else %>
+          no article
+          <% end %>
+        </small>
+      </li>
+      <% end %>
+      <%= will_paginate %>
+    </ul>
+  </div>
+</div>
