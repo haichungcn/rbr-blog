@@ -8,10 +8,10 @@
     <p class="text-muted font-italic">
       <% if (@article.created_at.to_time - @article.updated_at.to_time) >= 0 %>
       Posted on
-      <%= @article.created_at.strftime(" %H:%m, %d/%m/%Y") %>
+      <%= @article.created_at.to_formatted_s(:long_ordinal) %>
       <% else %>
       Updated on
-      <%= @article.updated_at.strftime(" %H:%m, %d/%m/%Y") %>
+      <%= @article.updated_at.to_formatted_s(:long_ordinal) %>
       <% end %>
     </p>
 

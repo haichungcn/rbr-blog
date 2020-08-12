@@ -20,7 +20,7 @@
     </div>
     <hr>
     <small class="text-muted font-italic mb-4">
-      Posted on <%= article.created_at.strftime(" %H:%m, %d/%m/%Y") %><br>by <%= link_to article.user.name, article.user %>
+      Posted on <%= article.created_at.to_formatted_s(:long_ordinal) %><br>by <%= link_to article.user.name, article.user %>
     </small>
     <div class="tool-box">
       <%= link_to '👁', article_path(article), class: "text-decoration-none" %>

@@ -1,6 +1,9 @@
 <div class="row text-center m-4">
   <div class="col-12">
-    <p class="h1 text-info mb-3">#<%= @category.name %></p>
+    <p class="mb-3">
+      <span class="h1 text-info">#<%= @category.name %></span>
+    </p>
+    <p class="display-5 mt-2"><%= link_to '📝', edit_category_path(@category), class: "text-decoration-none" %></p>
     <p class="h5 text-dark mb-5">All posts: </p>
 
     <% if @category.articles.any? %>

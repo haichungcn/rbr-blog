@@ -1,4 +1,6 @@
 <%= form_with(model: [ @article, @article.comments.build ], local: true, html: { class: "comment-form"}) do |form| %>
+
+
 <div class="comment-commenter-container text-primary mb-3">
   <strong>Commenting as <%= current_user.name %></strong>
 </div>

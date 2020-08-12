@@ -1,11 +1,15 @@
 class CommentsController < ApplicationController
   before_action :require_user
-  
+
   def create
     @article = Article.find(params[:article_id])
     @comment = Comment.new(body: comment_params[:body], user_id: current_user.id)
-    @article.comments.append(@comment)
-    redirect_to article_path(@article)
+    if @article.comments.append(@comment)
+      flash[:success] = 'Comment is successfully posted'
+    else
+      flash[:danger] = "Error while posting comment: #{@comment.errors.full_messages[0]}"
+    end
+    redirect_to article_path(@article, @comment)
   end
 
   def destroy
@@ -21,8 +25,8 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def comment_params
     params.require(:comment).permit(:body)
   end
-
 end
