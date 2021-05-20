@@ -12,7 +12,7 @@ gem 'bootstrap-will_paginate', '1.0.0'
 # Use Postgres as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', '~> 4.3'
 # Use Bootstrap for styling
 gem 'bootstrap', '~> 4.5.0'
 # Use SCSS for stylesheets
